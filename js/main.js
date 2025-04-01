@@ -10,27 +10,24 @@ const contactForm = document.getElementById('contactForm');
 const yearElement = document.getElementById('year');
 
 // Theme Toggle
+const themeToggle = document.querySelector('.theme-toggle');
+const body = document.body;
+
 function initTheme() {
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-        body.classList.add(currentTheme + '-mode');
-        if (currentTheme === 'light') {
-            icon.classList.replace('fa-moon', 'fa-sun');
-        }
-    }
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', savedTheme);
+    themeToggle.querySelector('i').className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
 }
 
 themeToggle.addEventListener('click', () => {
-    if (body.classList.contains('light-mode')) {
-        body.classList.remove('light-mode');
-        icon.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        body.classList.add('light-mode');
-        icon.classList.replace('fa-moon', 'fa-sun');
-        localStorage.setItem('theme', 'light');
-    }
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    themeToggle.querySelector('i').className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
 });
+
 
 // Mobile Menu Toggle
 menuToggle.addEventListener('click', () => {
@@ -75,5 +72,5 @@ contactForm.addEventListener('submit', (e) => {
 // Set current year in footer
 yearElement.textContent = new Date().getFullYear();
 
-// Initialize theme on load
+// Initialize
 document.addEventListener('DOMContentLoaded', initTheme);
