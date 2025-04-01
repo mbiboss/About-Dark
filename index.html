@@ -29,11 +29,16 @@
             top: 0;
             z-index: 1000;
         }
+        .profile-header {
+            display: flex;
+            align-items: center;
+        }
         .profile-pic {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 2px solid #00ffcc;
+            border: 3px solid #00ffcc;
+            margin-right: 15px;
         }
         .nav-links a {
             color: #ffffff;
@@ -43,6 +48,18 @@
         }
         .nav-links a:hover {
             color: #00ffcc;
+        }
+        .social-icons {
+            margin-top: 10px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #00ffcc;
+            transition: transform 0.3s;
+        }
+        .social-icons a:hover {
+            transform: scale(1.2);
         }
         .hero {
             height: 100vh;
@@ -61,7 +78,7 @@
         .btn {
             display: inline-block;
             margin: 10px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 5px;
             text-decoration: none;
             background: #00ffcc;
@@ -70,17 +87,29 @@
         }
         .btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 10px #00ffcc;
+            box-shadow: 0 0 15px #00ffcc;
         }
-        .comment-button {
+        .comment-section {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #00ffcc;
-            color: #000;
-            padding: 10px 20px;
-            border: none;
+            width: 300px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        .comment-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
             border-radius: 5px;
+        }
+        .comment-button {
+            width: 100%;
+            background: #00ffcc;
+            padding: 8px;
+            border: none;
             cursor: pointer;
         }
     </style>
@@ -102,21 +131,31 @@
         <div class="hero-content">
             <h1>Hi, I'm <span style="color: #00ffcc;">Dark</span></h1>
             <p>Cybersecurity Specialist & Full-Stack Developer</p>
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+            </div>
             <a href="#portfolio" class="btn">View Work</a>
             <a href="#contact" class="btn">Contact</a>
         </div>
     </section>
+    <div class="comment-section">
+        <input type="text" id="commentInput" class="comment-input" placeholder="Write a comment...">
+        <button class="comment-button" onclick="addComment()">💬 Comment</button>
+        <div id="commentsList"></div>
+    </div>
     <script>
         function addComment() {
-            let comment = prompt("Enter your comment:");
-            if (comment) {
+            let input = document.getElementById("commentInput").value;
+            if (input) {
                 let commentBox = document.createElement("div");
                 commentBox.className = "comment";
-                commentBox.innerText = comment;
-                document.body.appendChild(commentBox);
+                commentBox.innerText = input;
+                document.getElementById("commentsList").appendChild(commentBox);
+                document.getElementById("commentInput").value = "";
             }
         }
     </script>
-    <button class="comment-button" onclick="addComment()">💬 Comment</button>
 </body>
 </html>
