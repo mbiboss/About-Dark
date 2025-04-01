@@ -8,135 +8,115 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #00ffcc;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('images/background.jpg') no-repeat center center/cover;
+        }
+        .hero-content {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            background: #00ffcc;
+            color: #000;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #00ffcc;
+        }
+        .comment-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #00ffcc;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-    
-    <!-- Header with Profile -->
     <header>
-        <div class="container">
-            <nav>
-                <div class="profile-header">
-                    <img src="images/profile.png" alt="Dark" class="profile-pic">
-                    <a href="#" class="logo">DARK</a>
-                </div>
-                <div class="nav-links">
-                    <a href="#expertise">Expertise</a>
-                    <a href="#portfolio">Work</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                    <button class="theme-toggle" aria-label="Toggle theme">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
+        <div class="profile-header">
+            <img src="images/profile.png" alt="Dark" class="profile-pic">
+            <a href="#" class="logo">DARK</a>
         </div>
+        <nav class="nav-links">
+            <a href="#expertise">Expertise</a>
+            <a href="#portfolio">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
-
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content hidden">
-                <h1>Hi, I'm <span>Dark</span></h1>
-                <p class="hero-subtitle">Cybersecurity Specialist & Full-Stack Developer</p>
-                <div class="hero-buttons">
-                    <a href="#portfolio" class="btn">
-                        <i class="fas fa-eye"></i> View Work
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <i class="fas fa-paper-plane"></i> Contact
-                    </a>
-                </div>
-            </div>
+        <div class="hero-content">
+            <h1>Hi, I'm <span style="color: #00ffcc;">Dark</span></h1>
+            <p>Cybersecurity Specialist & Full-Stack Developer</p>
+            <a href="#portfolio" class="btn">View Work</a>
+            <a href="#contact" class="btn">Contact</a>
         </div>
     </section>
-
-    <!-- Expertise Section -->
-    <section id="expertise" class="hidden">
-        <div class="container">
-            <h2 class="section-title">My Expertise</h2>
-            <div class="expertise-grid">
-                <div class="expertise-card">
-                    <div class="expertise-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Penetration Testing</h3>
-                    <p>Advanced security assessments and vulnerability analysis</p>
-                </div>
-                <!-- Add more expertise cards -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="hidden">
-        <div class="container">
-            <h2 class="section-title">My Work</h2>
-            <div class="projects-grid">
-                <!-- Add project cards -->
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="hidden">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-container">
-                <div class="about-text">
-                    <p>Cybersecurity professional with expertise in...</p>
-                    <!-- Add your content -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="hidden">
-        <div class="container">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Reach Out</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <a href="mailto:your@email.com">mbiboss@email.com</a>
-                            </div>
-                        </div>
-                        <!-- Add more contact info -->
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <!-- Add form fields -->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="hidden">
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">DARK</div>
-                <div class="social-links">
-                    <!-- Add social links -->
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/main.js"></script>
+    <script>
+        function addComment() {
+            let comment = prompt("Enter your comment:");
+            if (comment) {
+                let commentBox = document.createElement("div");
+                commentBox.className = "comment";
+                commentBox.innerText = comment;
+                document.body.appendChild(commentBox);
+            }
+        }
+    </script>
+    <button class="comment-button" onclick="addComment()">💬 Comment</button>
 </body>
 </html>
