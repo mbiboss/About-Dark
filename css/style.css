@@ -1,7 +1,8 @@
-/* Base Styles */
 :root {
     --primary-dark: #0f172a;
     --primary-light: #f8fafc;
+    --text-dark: #1e293b;
+    --text-light: #f8fafc;
     --accent: #3b82f6;
     --accent-hover: #2563eb;
     --glass: rgba(255, 255, 255, 0.05);
@@ -10,118 +11,42 @@
 }
 
 [data-theme="light"] {
-    --primary-dark: #f8fafc;
-    --primary-light: #0f172a;
+    --primary-dark: #ffffff;
+    --primary-light: #f8fafc;
+    --text-dark: #1e293b;
+    --text-light: #1e293b;
     --glass: rgba(0, 0, 0, 0.05);
     --glass-border: rgba(0, 0, 0, 0.1);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
+/* Base Styles */
 body {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: var(--primary-light);
-    line-height: 1.6;
-    overflow-x: hidden;
+    background: var(--primary-dark);
+    color: var(--text-light);
     transition: all 0.4s ease;
 }
 
-body.light-mode {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-section {
-    padding: 6rem 0;
-    position: relative;
-}
-
-/* Header Styles */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: var(--glass);
-    border-bottom: 1px solid var(--glass-border);
-}
-
-nav {
+.profile-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 0;
+    gap: 1rem;
+}
+
+.profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
 }
 
 .logo {
+    font-size: 1.8rem;
     font-weight: 700;
-    font-size: 1.5rem;
     background: linear-gradient(to right, var(--accent), #8b5cf6);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-}
-
-.nav-links a {
-    color: var(--primary-light);
-    text-decoration: none;
-    font-weight: 500;
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--accent);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.theme-toggle {
-    background: none;
-    border: none;
-    color: var(--primary-light);
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.theme-toggle:hover {
-    transform: rotate(30deg);
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--primary-light);
-    font-size: 1.5rem;
-    cursor: pointer;
 }
 
 /* Hero Section */
