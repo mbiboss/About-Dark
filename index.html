@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Host | Cybersecurity & Full-Stack Development</title>
-    <meta name="description" content="Professional cybersecurity expert and full-stack developer specializing in secure web solutions and penetration testing">
+    <title>Dark | Cybersecurity Specialist</title>
+    <meta name="description" content="Professional cybersecurity expert and full-stack developer">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
@@ -14,317 +14,95 @@
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
     
-    <!-- Header -->
+    <!-- Header with Profile -->
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">DH</a>
-                
+                <div class="profile-header">
+                    <img src="images/profile.png" alt="Dark" class="profile-pic">
+                    <a href="#" class="logo">DARK</a>
+                </div>
                 <div class="nav-links">
                     <a href="#expertise">Expertise</a>
-                    <a href="#portfolio">Portfolio</a>
+                    <a href="#portfolio">Work</a>
                     <a href="#about">About</a>
                     <a href="#contact">Contact</a>
                     <button class="theme-toggle" aria-label="Toggle theme">
                         <i class="fas fa-moon"></i>
                     </button>
                 </div>
-                
                 <button class="menu-toggle" aria-label="Toggle menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
         </div>
     </header>
-    
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content hidden">
-                <h1>Hi, I'm <span>Dark Host</span></h1>
-                <p class="hero-subtitle">Cybersecurity Specialist & Full-Stack Developer with 5+ years experience building secure digital solutions</p>
+                <h1>Hi, I'm <span>Dark</span></h1>
+                <p class="hero-subtitle">Cybersecurity Specialist & Full-Stack Developer</p>
                 <div class="hero-buttons">
                     <a href="#portfolio" class="btn">
-                        <i class="fas fa-eye"></i> View My Work
+                        <i class="fas fa-eye"></i> View Work
                     </a>
                     <a href="#contact" class="btn btn-outline">
-                        <i class="fas fa-paper-plane"></i> Contact Me
+                        <i class="fas fa-paper-plane"></i> Contact
                     </a>
-                </div>
-                <div class="hero-scroll">
-                    <span>Scroll to explore</span>
-                    <i class="fas fa-chevron-down"></i>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Expertise Section -->
     <section id="expertise" class="hidden">
         <div class="container">
             <h2 class="section-title">My Expertise</h2>
-            <p class="section-subtitle">Specialized services tailored to your security and development needs</p>
-            
             <div class="expertise-grid">
                 <div class="expertise-card">
                     <div class="expertise-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Penetration Testing</h3>
-                    <p>Comprehensive security assessments to identify vulnerabilities in your systems before attackers do.</p>
+                    <p>Advanced security assessments and vulnerability analysis</p>
                 </div>
-                
-                <div class="expertise-card">
-                    <div class="expertise-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Secure Web Development</h3>
-                    <p>Building applications with security-first principles from the ground up.</p>
-                </div>
-                
-                <div class="expertise-card">
-                    <div class="expertise-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Full-Stack Solutions</h3>
-                    <p>End-to-end development of robust, scalable web applications.</p>
-                </div>
-                
-                <div class="expertise-card">
-                    <div class="expertise-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>Cloud Security</h3>
-                    <p>Securing your cloud infrastructure and implementing best practices.</p>
-                </div>
+                <!-- Add more expertise cards -->
             </div>
         </div>
     </section>
-    
+
     <!-- Portfolio Section -->
     <section id="portfolio" class="hidden">
         <div class="container">
-            <h2 class="section-title">Selected Work</h2>
-            <p class="section-subtitle">A showcase of my professional projects and contributions</p>
-            
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="security">Security</button>
-                <button class="filter-btn" data-filter="web">Web Development</button>
-                <button class="filter-btn" data-filter="consulting">Consulting</button>
-            </div>
-            
+            <h2 class="section-title">My Work</h2>
             <div class="projects-grid">
-                <div class="project-card" data-category="security">
-                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
-                        <div class="project-tags">
-                            <span class="project-tag">Penetration Testing</span>
-                            <span class="project-tag">Security Audit</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Enterprise Security Assessment</h3>
-                        <p>Conducted comprehensive penetration testing for Fortune 500 company, identifying 42 critical vulnerabilities.</p>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <i class="fas fa-bug"></i>
-                                <span>42 vulnerabilities patched</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-percentage"></i>
-                                <span>100% remediation</span>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-small">
-                                <i class="fas fa-file-alt"></i> Case Study
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="web">
-                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');">
-                        <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">Node.js</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Secure Banking Portal</h3>
-                        <p>Developed a financial application with end-to-end encryption and multi-factor authentication.</p>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <i class="fas fa-shield-alt"></i>
-                                <span>Zero breaches</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-users"></i>
-                                <span>250k+ users</span>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-small">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="consulting">
-                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
-                        <div class="project-tags">
-                            <span class="project-tag">Security</span>
-                            <span class="project-tag">Compliance</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>GDPR Compliance Framework</h3>
-                        <p>Implemented comprehensive data protection measures for EU-based e-commerce platform.</p>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Full compliance</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-chart-line"></i>
-                                <span>30% risk reduction</span>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-small">
-                                <i class="fas fa-file-contract"></i> Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section-cta">
-                <a href="#contact" class="btn">
-                    <i class="fas fa-paper-plane"></i> Start Your Project
-                </a>
+                <!-- Add project cards -->
             </div>
         </div>
     </section>
-    
+
     <!-- About Section -->
     <section id="about" class="hidden">
         <div class="container">
-            <h2 class="section-title">Professional Profile</h2>
-            <p class="section-subtitle">My journey in cybersecurity and development</p>
-            
+            <h2 class="section-title">About Me</h2>
             <div class="about-container">
                 <div class="about-text">
-                    <p>With over 5 years of experience in both cybersecurity and full-stack development, I bring a unique perspective to building digital solutions that are as secure as they are functional.</p>
-                    
-                    <p>My career began in ethical hacking, where I discovered my passion for building systems that could withstand even the most sophisticated attacks. This led me to pursue development with a security-first mindset.</p>
-                    
-                    <div class="experience-timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-date">2021 - Present</div>
-                            <div class="timeline-content">
-                                <h4>Senior Security Engineer</h4>
-                                <p>Fortune 500 Financial Services</p>
-                                <ul>
-                                    <li>Led team of 5 security analysts</li>
-                                    <li>Reduced security incidents by 72%</li>
-                                    <li>Implemented enterprise-wide encryption</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-date">2018 - 2021</div>
-                            <div class="timeline-content">
-                                <h4>Full-Stack Developer</h4>
-                                <p>Tech Startup Incubator</p>
-                                <ul>
-                                    <li>Built 12+ secure web applications</li>
-                                    <li>Developed proprietary security framework</li>
-                                    <li>Mentored junior developers</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-img">
-                    <img src="images/profile.jpg" alt="Dark Host">
-                    <div class="certification-badge">
-                        <i class="fas fa-certificate"></i>
-                        <span>Certified Ethical Hacker</span>
-                    </div>
-                    <div class="certification-badge">
-                        <i class="fas fa-certificate"></i>
-                        <span>OSCP Certified</span>
-                    </div>
-                </div>
-            </div>
-            
-            <h3 class="skills-title">Technical Proficiencies</h3>
-            <div class="skills-list">
-                <div class="skill-category">
-                    <h4>Security</h4>
-                    <div class="skills-items">
-                        <div class="skill-item">
-                            <div class="skill-name">Penetration Testing</div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">Cryptography</div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">Network Security</div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 92%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Development</h4>
-                    <div class="skills-items">
-                        <div class="skill-item">
-                            <div class="skill-name">JavaScript/Node.js</div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 94%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">Python</div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">React</div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <p>Cybersecurity professional with expertise in...</p>
+                    <!-- Add your content -->
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Contact Section -->
     <section id="contact" class="hidden">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Ready to discuss your security or development needs?</p>
-            
+            <h2 class="section-title">Contact</h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Contact Details</h3>
-                    
+                    <h3>Reach Out</h3>
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">
@@ -332,150 +110,33 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Email</h4>
-                                <a href="mailto:contact@darkhost.com">contact@darkhost.com</a>
+                                <a href="mailto:your@email.com">mbiboss@email.com</a>
                             </div>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Secure Line</h4>
-                                <a href="tel:+1234567890">+1 (234) 567-890</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Based In</h4>
-                                <span>Global (Remote Services Available)</span>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Availability</h4>
-                                <span>24/7 for emergency security incidents</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="security-notice">
-                        <i class="fas fa-lock"></i>
-                        <p>All communications are encrypted end-to-end</p>
+                        <!-- Add more contact info -->
                     </div>
                 </div>
-                
                 <div class="contact-form">
                     <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Service Needed</label>
-                            <select id="service" class="form-control" required>
-                                <option value="">Select a service</option>
-                                <option value="security">Security Audit</option>
-                                <option value="development">Web Development</option>
-                                <option value="consulting">Security Consulting</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Project Details</label>
-                            <textarea id="message" class="form-control" required placeholder="Please describe your project and security requirements"></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <div class="confirmation">
-                                <input type="checkbox" id="nda" required>
-                                <label for="nda">I understand all communications are confidential</label>
-                            </div>
-                        </div>
-                        
-                        <button type="submit" class="btn">
-                            <i class="fas fa-paper-plane"></i> Send Secure Message
-                        </button>
+                        <!-- Add form fields -->
                     </form>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer class="hidden">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">DH</div>
-                    <p class="tagline">Secure by Design. Built to Last.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="links-group">
-                        <h4>Services</h4>
-                        <a href="#">Penetration Testing</a>
-                        <a href="#">Secure Development</a>
-                        <a href="#">Security Training</a>
-                    </div>
-                    
-                    <div class="links-group">
-                        <h4>Resources</h4>
-                        <a href="#">Security Blog</a>
-                        <a href="#">Whitepapers</a>
-                        <a href="#">Tools</a>
-                    </div>
-                    
-                    <div class="links-group">
-                        <h4>Company</h4>
-                        <a href="#">About</a>
-                        <a href="#">Ethics</a>
-                        <a href="#">Privacy Policy</a>
-                    </div>
-                </div>
-                
+                <div class="logo">DARK</div>
                 <div class="social-links">
-                    <a href="#" class="social-link" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-link" aria-label="Keybase">
-                        <i class="fas fa-key"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; <span id="year"></span> Dark Host. All rights reserved.</p>
-                <div class="security-badges">
-                    <span><i class="fas fa-lock"></i> This website uses end-to-end encryption</span>
-                    <span><i class="fas fa-shield-alt"></i> No tracking cookies</span>
+                    <!-- Add social links -->
                 </div>
             </div>
         </div>
     </footer>
-    
+
     <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
 </body>
 </html>
