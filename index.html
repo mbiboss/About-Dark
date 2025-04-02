@@ -3,148 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark | Professional Portfolio</title>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
-    <link rel="icon" href="image/profile.png">
+    <title>DARK | Premium Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --primary-dark: #6a1b9a;
+            --secondary: #00f5d4;
+            --dark: #0f0f1a;
+            --darker: #080811;
+            --light: #f0f0f5;
+            --glass: rgba(15, 15, 26, 0.85);
+            --glass-light: rgba(255, 255, 255, 0.08);
+            --neon-glow: 0 0 15px var(--primary), 0 0 30px var(--primary);
+        }
+
+        /* Ultra-premium base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.8;
+            perspective: 1000px;
+        }
+
+        /* 3D Parallax Container */
+        .parallax-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .parallax-layer {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            background: url('https://i.postimg.cc/rF6jbHTC/mbiboss.jpg') center/cover no-repeat;
+            filter: brightness(0.4) contrast(1.2);
+            will-change: transform;
+        }
+
+        /* Cyberpunk Glass Navigation */
+        .cyber-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-light);
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--neon-glow);
+        }
+
+        /* Holographic Card Effect */
+        .holographic-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-light);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .holographic-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(138, 43, 226, 0.1),
+                rgba(0, 245, 212, 0.1),
+                rgba(138, 43, 226, 0.1)
+            );
+            transform: rotate(30deg);
+            z-index: -1;
+            animation: holographic 8s linear infinite;
+        }
+
+        @keyframes holographic {
+            0% { transform: rotate(0deg) translateX(-10%); }
+            100% { transform: rotate(360deg) translateX(10%); }
+        }
+
+        /* Neural Network Connection Effect */
+        .neural-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        /* Cyberpunk Button */
+        .cyber-button {
+            position: relative;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            box-shadow: var(--neon-glow);
+        }
+
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            transition: 0.5s;
+        }
+
+        .cyber-button:hover::before {
+            left: 100%;
+        }
+
+        /* Matrix Rain Effect */
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+    </style>
 </head>
 <body>
-    <div id="particles-js"></div>
-    
-    <header class="glass-nav">
-        <div class="container">
-            <a href="#" class="logo">DARK</a>
-            <nav>
-                <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="theme-toggle" aria-label="Toggle theme">
-                <span class="theme-icon"></span>
-            </button>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <!-- 3D Parallax Background -->
+    <div class="parallax-container">
+        <div class="parallax-layer" id="parallax-layer"></div>
+    </div>
+
+    <!-- Matrix Rain Effect (optional) -->
+    <canvas id="matrix-rain" class="matrix-rain"></canvas>
+
+    <!-- Cyberpunk Navigation -->
+    <nav class="cyber-nav">
+        <div class="logo">DARK</div>
+        <div class="nav-links">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="#work" class="nav-link">Work</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </div>
-    </header>
+        <button class="cyber-button">Let's Talk</button>
+    </nav>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1 class="hero-title glitch" data-text="DARK">DARK</h1>
-                <p class="hero-subtitle">Digital Alchemist & Visual Storyteller</p>
-                <div class="hero-cta">
-                    <a href="#work" class="btn btn-primary">View Work</a>
-                    <a href="contact.html" class="btn btn-secondary">Contact Me</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section about">
-            <div class="container">
-                <h2 class="section-title">About <span>Me</span></h2>
-                <div class="about-content">
-                    <div class="about-image">
-                        <img src="assets/images/avatar.jpg" alt="Dark" class="avatar">
-                    </div>
-                    <div class="about-text">
-                        <p>I'm Dark, a multidisciplinary designer and developer specializing in creating immersive digital experiences that blend form and function.</p>
-                        <p>With over 8 years in the industry, I've helped brands and startups craft their digital presence through thoughtful design and cutting-edge technology.</p>
-                        <div class="about-stats">
-                            <div class="stat">
-                                <span class="stat-number" data-count="120">0</span>
-                                <span class="stat-label">Projects</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number" data-count="45">0</span>
-                                <span class="stat-label">Clients</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number" data-count="8">0</span>
-                                <span class="stat-label">Years</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="section skills">
-            <div class="container">
-                <h2 class="section-title">My <span>Skills</span></h2>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <svg><!-- SVG icon --></svg>
-                        </div>
-                        <h3>UI/UX Design</h3>
-                        <p>Creating intuitive interfaces with pixel-perfect precision and user-centered design principles.</p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="95"></div>
-                        </div>
-                    </div>
-                    <!-- More skill cards -->
-                </div>
-            </div>
-        </section>
-
-        <section id="work" class="section work">
-            <div class="container">
-                <h2 class="section-title">Featured <span>Work</span></h2>
-                <div class="work-grid">
-                    <!-- Work items will be loaded via JS -->
-                </div>
-                <div class="work-cta">
-                    <a href="projects.html" class="btn btn-primary">View All Projects</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="logo">DARK</a>
-                    <p>Creating digital experiences that matter.</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#work">Work</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h3>Get In Touch</h3>
-                    <ul>
-                        <li><a href="mailto:contact@darkportfolio.com">contact@darkportfolio.com</a></li>
-                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 Dark Portfolio. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Dribbble"><!-- SVG icon --></a>
-                    <a href="#" aria-label="Behance"><!-- SVG icon --></a>
-                    <a href="#" aria-label="LinkedIn"><!-- SVG icon --></a>
-                    <a href="#" aria-label="GitHub"><!-- SVG icon --></a>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="holographic-card">
+            <h1 class="hero-title">DIGITAL <span>ALCHEMIST</span></h1>
+            <p class="hero-subtitle">Transforming visions into immersive digital experiences</p>
+            <div class="hero-actions">
+                <button class="cyber-button">View Portfolio</button>
+                <button class="cyber-button secondary">Explore Services</button>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="assets/js/particles.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- Neural Network Connections -->
+    <svg class="neural-network" width="100%" height="100%" viewBox="0 0 100% 100%" preserveAspectRatio="none">
+        <!-- Complex neural path animations would go here -->
+    </svg>
+
+    <script>
+        // Advanced 3D Parallax Effect
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            document.getElementById('parallax-layer').style.transform = 
+                `translate(${x * 30}px, ${y * 30}px)`;
+        });
+
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix-rain');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const rainDrops = [];
+
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(15, 15, 26, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00f5d4';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        setInterval(draw, 30);
+    </script>
 </body>
 </html>
