@@ -8,28 +8,50 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="custom-cursor"></div>
     <header>
         <nav>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
-            <button id="theme-toggle">Change Theme</button>
+            <button id="theme-toggle"><i class="fas fa-adjust"></i> Change Theme</button>
         </nav>
     </header>
     <section id="hero">
-        <img src="assets/profile.jpg" alt="Profile Picture" class="profile-pic">
-        <h1>Welcome to Dark Portfolio</h1>
-        <p>Cyberpunk-themed developer portfolio.</p>
+        <div class="hero-content">
+            <img src="assets/profile.jpg" alt="Profile Picture" class="profile-pic">
+            <h1>Welcome to <span class="neon-text">Dark Portfolio</span></h1>
+            <p class="subheading">Cyberpunk-themed developer portfolio.</p>
+            <button class="cta-button">View My Work</button>
+        </div>
     </section>
-    <section id="about">
+    <section id="about" class="content-section">
         <h2>About Me</h2>
         <p>Passionate developer with a love for cyberpunk aesthetics.</p>
     </section>
+    <section id="projects" class="content-section">
+        <h2>Projects</h2>
+        <div class="project-card">
+            <h3>Project 1</h3>
+            <p>Description of the project goes here.</p>
+        </div>
+        <div class="project-card">
+            <h3>Project 2</h3>
+            <p>Description of the project goes here.</p>
+        </div>
+    </section>
+    <section id="contact" class="content-section">
+        <h2>Contact Me</h2>
+        <p>Email: your.email@example.com</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Dark Portfolio. All Rights Reserved.</p>
+    </footer>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/particles.js"></script>
     <script src="assets/js/scrollEffects.js"></script>
