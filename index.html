@@ -18,7 +18,7 @@
             --neon-glow: 0 0 15px var(--primary), 0 0 30px var(--primary);
         }
 
-        /* Ultra-premium base styles */
+        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -34,7 +34,18 @@
             perspective: 1000px;
         }
 
-        /* 3D Parallax Container */
+        section {
+            min-height: 100vh;
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 3D Parallax Background */
         .parallax-container {
             position: fixed;
             top: 0;
@@ -54,7 +65,7 @@
             will-change: transform;
         }
 
-        /* Cyberpunk Glass Navigation */
+        /* Cyberpunk Navigation */
         .cyber-nav {
             position: fixed;
             top: 0;
@@ -79,6 +90,36 @@
             background-clip: text;
             color: transparent;
             text-shadow: var(--neon-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
         }
 
         /* Holographic Card Effect */
@@ -117,17 +158,6 @@
             100% { transform: rotate(360deg) translateX(10%); }
         }
 
-        /* Neural Network Connection Effect */
-        .neural-network {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.15;
-        }
-
         /* Cyberpunk Button */
         .cyber-button {
             position: relative;
@@ -141,6 +171,8 @@
             overflow: hidden;
             transition: all 0.5s ease;
             box-shadow: var(--neon-glow);
+            cursor: pointer;
+            margin: 0.5rem;
         }
 
         .cyber-button::before {
@@ -158,15 +190,134 @@
             left: 100%;
         }
 
-        /* Matrix Rain Effect */
-        .matrix-rain {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .cyber-button.secondary {
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px var(--secondary), 0 0 30px var(--secondary);
+        }
+
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .profile-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: var(--neon-glow);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .profile-info h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .profile-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+
+        .profile-info p {
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .form-input {
             width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.05;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-light);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--neon-glow);
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .profile-info h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -176,40 +327,131 @@
         <div class="parallax-layer" id="parallax-layer"></div>
     </div>
 
-    <!-- Matrix Rain Effect (optional) -->
-    <canvas id="matrix-rain" class="matrix-rain"></canvas>
-
     <!-- Cyberpunk Navigation -->
     <nav class="cyber-nav">
         <div class="logo">DARK</div>
         <div class="nav-links">
-            <a href="#" class="nav-link active">Home</a>
-            <a href="#work" class="nav-link">Work</a>
+            <a href="#home" class="nav-link active">Home</a>
             <a href="#about" class="nav-link">About</a>
+            <a href="#work" class="nav-link">Work</a>
             <a href="#contact" class="nav-link">Contact</a>
         </div>
-        <button class="cyber-button">Let's Talk</button>
+        <button class="cyber-button">Hire Me</button>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="holographic-card">
-            <h1 class="hero-title">DIGITAL <span>ALCHEMIST</span></h1>
-            <p class="hero-subtitle">Transforming visions into immersive digital experiences</p>
-            <div class="hero-actions">
-                <button class="cyber-button">View Portfolio</button>
-                <button class="cyber-button secondary">Explore Services</button>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="profile-section">
+                <img src="your-profile.png" alt="Profile Picture" class="profile-image">
+                <div class="profile-info">
+                    <h1>DARK</h1>
+                    <h2>Digital Experience Architect</h2>
+                    <p>Creating immersive digital experiences that blend cutting-edge technology with elegant design. Specializing in interactive web solutions that drive engagement and deliver results.</p>
+                    <div>
+                        <button class="cyber-button">View Portfolio</button>
+                        <button class="cyber-button secondary">Download CV</button>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Neural Network Connections -->
-    <svg class="neural-network" width="100%" height="100%" viewBox="0 0 100% 100%" preserveAspectRatio="none">
-        <!-- Complex neural path animations would go here -->
-    </svg>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="holographic-card">
+                <h2>About Me</h2>
+                <p>With over 8 years in the digital industry, I've mastered the art of blending technology and creativity to build experiences that users love. My journey has taken me through:</p>
+                
+                <div style="margin: 2rem 0;">
+                    <h3>Core Skills</h3>
+                    <ul style="columns: 2; list-style: none;">
+                        <li><i class="fas fa-code" style="color: var(--secondary); margin-right: 0.5rem;"></i> Advanced JavaScript</li>
+                        <li><i class="fas fa-paint-brush" style="color: var(--secondary); margin-right: 0.5rem;"></i> UI/UX Design</li>
+                        <li><i class="fas fa-mobile" style="color: var(--secondary); margin-right: 0.5rem;"></i> Responsive Development</li>
+                        <li><i class="fas fa-cube" style="color: var(--secondary); margin-right: 0.5rem;"></i> Three.js/WebGL</li>
+                        <li><i class="fas fa-server" style="color: var(--secondary); margin-right: 0.5rem;"></i> Backend Integration</li>
+                        <li><i class="fas fa-chart-line" style="color: var(--secondary); margin-right: 0.5rem;"></i> Performance Optimization</li>
+                    </ul>
+                </div>
+                
+                <h3>Professional Milestones</h3>
+                <ul style="margin: 1rem 0 2rem 2rem;">
+                    <li>Led design for Fortune 500 company's digital transformation</li>
+                    <li>Created award-winning interactive experiences for major brands</li>
+                    <li>Speaker at international web development conferences</li>
+                    <li>Mentored 50+ junior developers in advanced techniques</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="holographic-card">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind or want to discuss opportunities? Reach out and let's create something amazing together.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;">
+                    <div>
+                        <h3>Contact Information</h3>
+                        <ul style="list-style: none; margin-top: 1.5rem;">
+                            <li style="margin-bottom: 1rem;">
+                                <i class="fas fa-envelope" style="color: var(--secondary); margin-right: 1rem;"></i>
+                                contact@darkportfolio.com
+                            </li>
+                            <li style="margin-bottom: 1rem;">
+                                <i class="fas fa-phone" style="color: var(--secondary); margin-right: 1rem;"></i>
+                                +1 (555) 123-4567
+                            </li>
+                            <li style="margin-bottom: 1rem;">
+                                <i class="fas fa-map-marker-alt" style="color: var(--secondary); margin-right: 1rem;"></i>
+                                Digital Nomad (GMT±3)
+                            </li>
+                        </ul>
+                        
+                        <div style="margin-top: 2rem;">
+                            <h3>Availability</h3>
+                            <p style="margin-top: 0.5rem;">Currently accepting new projects with 2-3 week lead time for premium engagements.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="messageForm">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" id="name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" id="subject" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" class="form-input" required></textarea>
+                            </div>
+                            <button type="submit" class="cyber-button" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
-        // Advanced 3D Parallax Effect
+        // 3D Parallax Effect
         document.addEventListener('mousemove', (e) => {
             const x = e.clientX / window.innerWidth;
             const y = e.clientY / window.innerHeight;
@@ -217,44 +459,44 @@
                 `translate(${x * 30}px, ${y * 30}px)`;
         });
 
-        // Matrix Rain Effect
-        const canvas = document.getElementById('matrix-rain');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const nums = '0123456789';
-        const alphabet = katakana + latin + nums;
+        // Form submission
+        document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to a server
+            alert('Message sent successfully! I\'ll get back to you soon.');
+            this.reset();
+        });
 
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const rainDrops = [];
-
-        for (let x = 0; x < columns; x++) {
-            rainDrops[x] = 1;
-        }
-
-        const draw = () => {
-            ctx.fillStyle = 'rgba(15, 15, 26, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Active link highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
             
-            ctx.fillStyle = '#00f5d4';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < rainDrops.length; i++) {
-                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
                 
-                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    rainDrops[i] = 0;
+                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                    const id = section.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
                 }
-                rainDrops[i]++;
-            }
-        };
-
-        setInterval(draw, 30);
+            });
+        });
     </script>
 </body>
 </html>
