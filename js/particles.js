@@ -1,6 +1,7 @@
-// ========================
-// QUANTUM PARTICLE SYSTEM
-// ========================
+/**
+ * QUANTUM PARTICLE SYSTEM
+ * Interactive particle network with mouse attraction
+ */
 
 class QuantumParticles {
   constructor(canvasId) {
@@ -9,8 +10,8 @@ class QuantumParticles {
     
     this.ctx = this.canvas.getContext('2d');
     this.particles = [];
-    this.particleCount = 80;
-    this.mouse = { x: null, y: null, radius: 100 };
+    this.particleCount = window.innerWidth < 768 ? 30 : 80;
+    this.mouse = { x: null, y: null, radius: 120 };
     
     this.init();
     this.animate();
@@ -19,32 +20,29 @@ class QuantumParticles {
 
   init() {
     this.resizeCanvas();
-    
-    // Create quantum particles
-    for (let i = 0; i < this.particleCount; i++) {
-      this.particles.push(this.createParticle());
-    }
-  }
-
-  createParticle() {
-    const size = Math.random() * 3 + 1;
-    return {
-      x: Math.random() * this.canvas.width,
-      y: Math.random() * this.canvas.height,
-      size: size,
-      baseSize: size,
-      speedX: Math.random() * 2 - 1,
-      speedY: Math.random() * 2 - 1,
-      color: `hsla(${Math.random() * 60 + 270}, 80%, 70%, ${Math.random() * 0.3 + 0.1})`,
-      orbitAngle: Math.random() * Math.PI * 2,
-      orbitRadius: Math.random() * 50 + 20,
-      orbitSpeed: Math.random() * 0.02 + 0.01
-    };
+    this.createParticles();
   }
 
   resizeCanvas() {
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
+  }
+
+  createParticles() {
+    for (let i = 0; i < this.particleCount; i++) {
+      this.particles.push({
+        x: Math.random() * this.canvas.width,
+        y: Math.random() * this.canvas.height,
+        size: Math.random() * 3 + 1,
+        baseSize: Math.random() * 3 + 1,
+        speedX: Math.random() * 2 - 1,
+        speedY: Math.random() * 2 - 1,
+        color: `hsla(${Math.random() * 60 + 270}, 80%, 70%, ${Math.random() * 0.3 + 0.1})`,
+        orbitAngle: Math.random() * Math.PI * 2,
+        orbitRadius: Math.random() * 50 + 20,
+        orbitSpeed: Math.random() * 0.02 + 0.01
+      });
+    }
   }
 
   animate() {
@@ -57,7 +55,7 @@ class QuantumParticles {
       this.drawConnections(particle);
     });
     
-    requestAnimationFrame(this.animate.bind(this));
+    requestAnimationFrame(() => this.animate());
   }
 
   updateParticle(particle) {
@@ -77,10 +75,8 @@ class QuantumParticles {
         const angle = Math.atan2(dy, dx);
         const pushForce = force * 5;
         
-        targetX += Math.cos(angle) * pushForce;
-        targetY += Math.sin(angle) * pushForce;
-        
-        // Size pulse effect
+        particle.x += Math.cos(angle) * pushForce;
+        particle.y += Math.sin(angle) * pushForce;
         particle.size = particle.baseSize * (1 + force * 0.5);
       } else {
         particle.size = particle.baseSize;
@@ -97,6 +93,7 @@ class QuantumParticles {
   }
 
   drawParticle(particle) {
+    // Particle core
     this.ctx.beginPath();
     this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
     this.ctx.fillStyle = particle.color;
@@ -135,7 +132,9 @@ class QuantumParticles {
   }
 
   setupEventListeners() {
-    window.addEventListener('resize', this.resizeCanvas.bind(this));
+    window.addEventListener('resize', () => {
+      this.resizeCanvas();
+    });
     
     window.addEventListener('mousemove', (e) => {
       this.mouse.x = e.clientX;
@@ -148,8 +147,3 @@ class QuantumParticles {
     });
   }
 }
-
-// Initialize on window load
-window.addEventListener('load', () => {
-  new QuantumParticles('quantum-particles');
-});
