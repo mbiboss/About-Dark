@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DARK</title>
+    <title>DARK | Quantum Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #8a2be2;
             --primary-dark: #6a1b9a;
             --secondary: #00f5d4;
+            --accent: #f15bb5;
             --dark: #0f0f1a;
             --darker: #080811;
             --light: #f0f0f5;
-            --glass: rgba(15, 15, 26, 0.85);
-            --glass-light: rgba(255, 255, 255, 0.08);
+            --glass: rgba(15, 15, 26, 0.92);
+            --glass-light: rgba(255, 255, 255, 0.12);
             --neon-glow: 0 0 15px var(--primary), 0 0 30px var(--primary);
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -23,7 +24,7 @@
             --dark: #f8f9fa;
             --darker: #e9ecef;
             --light: #1e1e2d;
-            --glass: rgba(248, 249, 250, 0.85);
+            --glass: rgba(248, 249, 250, 0.92);
             --glass-light: rgba(0, 0, 0, 0.08);
             --primary: #6c5ce7;
             --secondary: #00b894;
@@ -54,6 +55,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         h1, h2, h3, h4 {
@@ -147,6 +149,7 @@
             transition: var(--transition);
         }
 
+        /* Enhanced Navigation Hover */
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -162,7 +165,7 @@
             transition: var(--transition);
         }
 
-        .nav-link::after {
+        .nav-link::before {
             content: '';
             position: absolute;
             bottom: 0;
@@ -170,12 +173,115 @@
             width: 0;
             height: 2px;
             background: var(--secondary);
-            transition: width 0.3s ease;
+            transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .nav-link:hover::after,
-        .nav-link.active::after {
+        .nav-link:hover::before {
             width: 100%;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Cyber Lock Button Effect */
+        .btn-cyber {
+            position: relative;
+            padding: 1.2rem 2.8rem;
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--neon-glow);
+            z-index: 1;
+        }
+
+        .btn-cyber::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .btn-cyber:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn-cyber::after {
+            content: '🔒';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cyber:hover::after {
+            opacity: 1;
+            right: 1.5rem;
+        }
+
+        /* Download CV Button */
+        .btn-download {
+            position: relative;
+            padding: 1.2rem 2.8rem;
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--secondary);
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 0 15px rgba(0, 187, 249, 0.3);
+        }
+
+        .btn-download::before {
+            content: '↓';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background: rgba(0, 187, 249, 0.1);
+            box-shadow: 0 0 25px rgba(0, 187, 249, 0.5);
+        }
+
+        .btn-download:hover::before {
+            right: 1.5rem;
+            opacity: 1;
         }
 
         /* Profile Section */
@@ -244,20 +350,34 @@
             transform: translateY(-5px) scale(1.1);
         }
 
-        /* About Section */
-        .about {
-            background: linear-gradient(to bottom, var(--darker), rgba(15, 15, 26, 0.7)), 
-                        url('pattern.png') center/cover;
-            background-attachment: fixed;
+        /* Circular Glass About Section */
+        .about-section {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 4rem;
+            border: 1px solid var(--glass-light);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(138, 43, 226, 0.1),
+                rgba(0, 245, 212, 0.1),
+                rgba(138, 43, 226, 0.1)
+            );
+            transform: rotate(30deg);
+            z-index: -1;
+            animation: holographic 8s linear infinite;
         }
 
         .skills-grid {
@@ -294,43 +414,52 @@
             font-size: 1.2rem;
         }
 
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-            margin-top: 2rem;
+        /* Work Section */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        .work-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--glass-light);
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .timeline-item {
-            position: relative;
-            padding-bottom: 2rem;
+        .work-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -26px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--secondary);
-            border: 2px solid var(--primary);
+        .work-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
         }
 
-        .timeline-date {
-            font-size: 0.9rem;
+        .work-info {
+            padding: 1.5rem;
+        }
+
+        .work-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .work-tag {
+            background: rgba(0, 245, 212, 0.2);
             color: var(--secondary);
-            margin-bottom: 0.5rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
         }
 
         /* Contact Form */
@@ -393,6 +522,25 @@
             100% { transform: rotate(360deg) translateX(10%); }
         }
 
+        /* Ripple Effect */
+        .ripple-effect {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: translate(-50%, -50%) scale(10);
+                opacity: 0;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .profile-section {
@@ -401,8 +549,8 @@
                 gap: 3rem;
             }
             
-            .about-content {
-                grid-template-columns: 1fr;
+            .about-section {
+                padding: 2rem;
             }
             
             .profile-image {
@@ -461,8 +609,8 @@
                     <h2>Digital Experience Architect</h2>
                     <p>Creating immersive digital experiences that blend cutting-edge technology with elegant design. Specializing in interactive web solutions that drive engagement and deliver results.</p>
                     <div>
-                        <button class="cyber-button">View Portfolio</button>
-                        <button class="cyber-button secondary">Download CV</button>
+                        <button class="btn-cyber">View Portfolio</button>
+                        <button class="btn-download">Download CV</button>
                     </div>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-github"></i></a>
@@ -476,61 +624,88 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">About <span style="color: var(--secondary);">Me</span></h2>
-            <div class="about-content">
-                <div>
-                    <h3 style="margin-bottom: 1.5rem;">My Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h4>Web Development</h4>
-                            <p>Advanced JavaScript, React, Vue, and modern frameworks with a focus on performance.</p>
+            <div class="about-section" data-animate="fade-up">
+                <h2>About <span style="color: var(--secondary);">Me</span></h2>
+                <p>With over 8 years in the digital industry, I've mastered the art of blending technology and creativity to build experiences that users love.</p>
+                
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="fas fa-paint-brush"></i>
-                            </div>
-                            <h4>UI/UX Design</h4>
-                            <p>User-centered design principles with pixel-perfect execution and prototyping.</p>
+                        <h4>Web Development</h4>
+                        <p>Advanced JavaScript, React, Vue, and modern frameworks with a focus on performance.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-paint-brush"></i>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <h4>Responsive Design</h4>
-                            <p>Fully responsive solutions that work seamlessly across all devices.</p>
+                        <h4>UI/UX Design</h4>
+                        <p>User-centered design principles with pixel-perfect execution and prototyping.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h4>Performance Optimization</h4>
-                            <p>Lightning-fast experiences with optimized assets and efficient code.</p>
+                        <h4>Responsive Design</h4>
+                        <p>Fully responsive solutions that work seamlessly across all devices.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-chart-line"></i>
                         </div>
+                        <h4>Performance Optimization</h4>
+                        <p>Lightning-fast experiences with optimized assets and efficient code.</p>
                     </div>
                 </div>
-                <div>
-                    <h3 style="margin-bottom: 1.5rem;">Experience</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-date">2021 - Present</div>
-                            <h4>Lead Digital Designer</h4>
-                            <p>Creative Director at Digital Innovations Agency</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work">
+        <div class="container">
+            <h2 data-animate="fade-down">Featured <span style="color: var(--secondary);">Work</span></h2>
+            <div class="work-grid">
+                <div class="work-card" data-animate="fade-up">
+                    <img src="https://via.placeholder.com/600x400/8a2be2/ffffff?text=Project+1" alt="Project 1" class="work-image">
+                    <div class="work-info">
+                        <h3>Quantum Dashboard</h3>
+                        <div class="work-tags">
+                            <span class="work-tag">React</span>
+                            <span class="work-tag">Three.js</span>
+                            <span class="work-tag">WebGL</span>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2018 - 2021</div>
-                            <h4>Senior UI Developer</h4>
-                            <p>Frontend Team Lead at Tech Solutions Inc.</p>
+                        <p>Advanced analytics dashboard with 3D data visualization and real-time metrics.</p>
+                        <button class="btn-cyber">View Project</button>
+                    </div>
+                </div>
+                <div class="work-card" data-animate="fade-up" style="animation-delay: 0.2s;">
+                    <img src="https://via.placeholder.com/600x400/6a1b9a/ffffff?text=Project+2" alt="Project 2" class="work-image">
+                    <div class="work-info">
+                        <h3>Neon Portfolio</h3>
+                        <div class="work-tags">
+                            <span class="work-tag">GSAP</span>
+                            <span class="work-tag">CSS3</span>
+                            <span class="work-tag">Particles.js</span>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2015 - 2018</div>
-                            <h4>Web Designer</h4>
-                            <p>Digital Design Specialist at Web Creatives</p>
+                        <p>Interactive portfolio with particle effects and smooth animations.</p>
+                        <button class="btn-cyber">View Project</button>
+                    </div>
+                </div>
+                <div class="work-card" data-animate="fade-up" style="animation-delay: 0.4s;">
+                    <img src="https://via.placeholder.com/600x400/00f5d4/000000?text=Project+3" alt="Project 3" class="work-image">
+                    <div class="work-info">
+                        <h3>Cyberpunk E-Commerce</h3>
+                        <div class="work-tags">
+                            <span class="work-tag">Vue.js</span>
+                            <span class="work-tag">Node.js</span>
+                            <span class="work-tag">MongoDB</span>
                         </div>
+                        <p>Futuristic e-commerce platform with immersive product showcases.</p>
+                        <button class="btn-cyber">View Project</button>
                     </div>
                 </div>
             </div>
@@ -538,10 +713,10 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact">
         <div class="container">
-            <div class="contact-form">
-                <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem;">Contact <span style="color: var(--secondary);">Me</span></h2>
+            <div class="contact-form" data-animate="fade-up">
+                <h2>Get In <span style="color: var(--secondary);">Touch</span></h2>
                 <form id="messageForm">
                     <div class="form-group">
                         <label for="name" class="form-label">Your Name</label>
@@ -559,7 +734,7 @@
                         <label for="message" class="form-label">Message</label>
                         <textarea id="message" class="form-input" required></textarea>
                     </div>
-                    <button type="submit" class="cyber-button" style="width: 100%; margin-top: 1rem;">Send Message</button>
+                    <button type="submit" class="btn-cyber" style="width: 100%;">Send Message</button>
                 </form>
             </div>
         </div>
@@ -602,9 +777,40 @@
         // Form submission
         document.getElementById('messageForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Here you would typically send the form data to a server
-            alert('Message sent successfully! I\'ll get back to you soon.');
-            this.reset();
+            
+            // Create confetti effect
+            createConfetti();
+            
+            // Show success message
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = '✓ Sent!';
+            
+            // Reset form and button
+            setTimeout(() => {
+                this.reset();
+                submitBtn.textContent = originalText;
+            }, 2000);
+        });
+
+        // Button ripple effects
+        document.querySelectorAll('.btn-cyber, .btn-download').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple-effect';
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
         });
 
         // Active link highlighting
@@ -630,12 +836,12 @@
 
         // Initialize animations
         document.addEventListener('DOMContentLoaded', () => {
-            const animateElements = document.querySelectorAll('.profile-section, .about-content, .contact-form');
+            const animateElements = document.querySelectorAll('[data-animate]');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
+                        entry.target.classList.add('animate');
                         observer.unobserve(entry.target);
                     }
                 });
@@ -645,6 +851,48 @@
                 observer.observe(el);
             });
         });
+
+        // Confetti effect
+        function createConfetti() {
+            const colors = ['#8a2be2', '#00f5d4', '#f15bb5', '#6c5ce7'];
+            const container = document.createElement('div');
+            container.style.position = 'fixed';
+            container.style.top = '0';
+            container.style.left = '0';
+            container.style.width = '100%';
+            container.style.height = '100%';
+            container.style.pointerEvents = 'none';
+            container.style.zIndex = '1000';
+            document.body.appendChild(container);
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = '-10px';
+                container.appendChild(confetti);
+                
+                const animation = confetti.animate([
+                    { transform: `translate(${Math.random() * 200 - 100}px, 0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translate(${Math.random() * 200 - 100}px, ${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)',
+                    delay: Math.random() * 1000
+                });
+                
+                animation.onfinish = () => {
+                    confetti.remove();
+                    if (container.children.length === 0) {
+                        container.remove();
+                    }
+                };
+            }
+        }
     </script>
 </body>
 </html>
