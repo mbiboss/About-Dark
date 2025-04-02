@@ -1,139 +1,54 @@
-/* ========================
-   QUANTUM DESIGN SYSTEM
-   ======================== */
-
-/* Core Variables */
-:root {
-  --primary: #7b2cbf;
-  --primary-dark: #5a189a;
-  --secondary: #00bbf9;
-  --accent: #f15bb5;
-  --dark: #0f0f1a;
-  --darker: #080811;
-  --light: #f8f9fa;
-  --glass: rgba(15, 15, 26, 0.92);
-  --glass-light: rgba(255, 255, 255, 0.12);
-  --neon-glow: 0 0 10px rgba(123, 44, 191, 0.7);
-  --transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-/* Base Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 62.5%;
-}
-
+/* assets/css/main.css */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--darker);
-  color: var(--light);
-  line-height: 1.6;
-  overflow-x: hidden;
-  font-size: 1.6rem;
+    background-color: #0d0d0d;
+    color: #00ffcc;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    cursor: none;
 }
 
-/* Layout Components */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+.custom-cursor {
+    width: 10px;
+    height: 10px;
+    background-color: #00ffcc;
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.1s ease;
 }
 
-section {
-  min-height: 100vh;
-  padding: 8rem 0;
-  position: relative;
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
 }
 
-/* Quantum Glass Components */
-.quantum-glass {
-  background: var(--glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-light);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  transition: var(--transition);
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
-/* Typography */
-h1 { font-size: clamp(3.2rem, 6vw, 5.6rem); }
-h2 { font-size: clamp(2.4rem, 4.5vw, 4rem); }
-h3 { font-size: clamp(2rem, 3.5vw, 3.2rem); }
-
-.text-gradient {
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+nav a {
+    color: #00ffcc;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-/* Navigation */
-.cyber-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 1.5rem 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--glass-light);
-  z-index: 1000;
-  transition: var(--transition);
+nav a:hover {
+    color: #ff00ff;
 }
 
-.nav-link {
-  color: var(--light);
-  text-decoration: none;
-  font-weight: 600;
-  position: relative;
-  padding: 0.5rem 0;
-  transition: var(--transition);
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #00ffcc;
 }
 
-/* Buttons */
-.btn-cyber {
-  position: relative;
-  padding: 1.2rem 2.8rem;
-  border: none;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: white;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: var(--transition);
-  box-shadow: var(--neon-glow);
-  z-index: 1;
-}
-
-/* Work Section Grid */
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .quantum-glass {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-  
-  section {
-    padding: 6rem 0;
-  }
+#hero {
+    text-align: center;
+    padding: 50px;
 }
