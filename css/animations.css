@@ -1,0 +1,200 @@
+/* Glitch Effect */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch::before {
+    color: #0ff;
+    z-index: -1;
+    animation: glitch-effect 3s infinite;
+}
+
+.glitch::after {
+    color: #f0f;
+    z-index: -2;
+    animation: glitch-effect 2s infinite reverse;
+}
+
+@keyframes glitch-effect {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-3px, 3px);
+    }
+    40% {
+        transform: translate(-3px, -3px);
+    }
+    60% {
+        transform: translate(3px, 3px);
+    }
+    80% {
+        transform: translate(3px, -3px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Fade In Animation */
+.fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Slide Up Animation */
+.slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.8s ease forwards;
+}
+
+/* Delay classes for staggered animations */
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+.delay-4 {
+    animation-delay: 0.8s;
+}
+
+.delay-5 {
+    animation-delay: 1s;
+}
+
+/* Hover animations */
+.hover-grow {
+    transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+    transform: scale(1.05);
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Rotate animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotate 10s linear infinite;
+}
+
+/* Background gradient animation */
+.animated-gradient {
+    background: linear-gradient(-45deg, #6c5ce7, #00cec9, #6c5ce7, #00cec9);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Floating animation */
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.floating {
+    animation: floating 6s ease-in-out infinite;
+}
+
+/* Section entrance animations */
+.section.animate .section-title {
+    animation: slideUp 0.8s ease forwards;
+}
+
+.section.animate .about-content > *,
+.section.animate .skills-grid > *,
+.section.animate .work-grid > * {
+    animation: slideUp 0.8s ease forwards;
+}
+
+.section.animate .about-image {
+    animation-delay: 0.2s;
+}
+
+.section.animate .about-text {
+    animation-delay: 0.4s;
+}
+
+.section.animate .skill-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.section.animate .skill-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.section.animate .skill-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.section.animate .work-item:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.section.animate .work-item:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.section.animate .work-item:nth-child(3) {
+    animation-delay: 0.6s;
+}
