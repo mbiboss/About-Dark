@@ -1,76 +1,141 @@
-// DOM Elements
-const themeToggle = document.querySelector('.theme-toggle');
-const body = document.body;
-const icon = themeToggle.querySelector('i');
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-const contactForm = document.getElementById('contactForm');
-const yearElement = document.getElementById('year');
-
-// Theme Toggle
-const themeToggle = document.querySelector('.theme-toggle');
-const body = document.body;
-
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    body.setAttribute('data-theme', savedTheme);
-    themeToggle.querySelector('i').className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-}
-
-themeToggle.addEventListener('click', () => {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
     
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    themeToggle.querySelector('i').className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-});
-
-
-// Mobile Menu Toggle
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.innerHTML = navLinks.classList.contains('active') ? 
-        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        this.classList.toggle('active');
     });
-});
-
-// Project Filtering
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterBtns.forEach(btn => btn.classList.remove('active'));
-        btn.classList.add('active');
+    
+    // Theme toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    const html = document.documentElement;
+    
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    
+    // Scroll reveal animations
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.section, .skill-card, .work-item');
         
-        const filter = btn.dataset.filter;
-        
-        projectCards.forEach(card => {
-            if (filter === 'all' || card.dataset.category === filter) {
-                card.style.display = 'block';
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementPosition < windowHeight - 100) {
+                element.classList.add('animate');
+            }
+        });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Run once on load
+    
+    // Counter animation
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200;
+    
+    function animateCounters() {
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-count');
+            const count = +counter.innerText;
+            const increment = target / speed;
+            
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(animateCounters, 1);
             } else {
-                card.style.display = 'none';
+                counter.innerText = target;
+            }
+        });
+    }
+    
+    // Start counters when skills section is in view
+    const skillsSection = document.querySelector('.skills');
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            animateCounters();
+            observer.unobserve(skillsSection);
+        }
+    }, { threshold: 0.5 });
+    
+    observer.observe(skillsSection);
+    
+    // Skill bar animation
+    const skillBars = document.querySelectorAll('.skill-progress');
+    
+    skillBars.forEach(bar => {
+        const width = bar.getAttribute('data-width');
+        bar.style.width = width + '%';
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
             }
         });
     });
+    
+    // Header scroll effect
+    const header = document.querySelector('.glass-nav');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Load work items dynamically
+    const workGrid = document.querySelector('.work-grid');
+    const workItems = [
+        {
+            title: 'Nebula UI Kit',
+            category: 'UI/UX Design',
+            image: 'assets/images/projects/project1.jpg'
+        },
+        // Add more work items
+    ];
+    
+    workItems.forEach(item => {
+        const workItem = document.createElement('div');
+        workItem.className = 'work-item';
+        workItem.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="work-overlay">
+                <h3>${item.title}</h3>
+                <p>${item.category}</p>
+                <a href="#" class="btn btn-secondary">View Project</a>
+            </div>
+        `;
+        workGrid.appendChild(workItem);
+    });
+    
+    // Initialize particles.js
+    particlesJS.load('particles-js', 'assets/js/particles-config.json');
 });
-
-// Form submission
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you for your message! I will get back to you soon.');
-    contactForm.reset();
-});
-
-// Set current year in footer
-yearElement.textContent = new Date().getFullYear();
-
-// Initialize
-document.addEventListener('DOMContentLoaded', initTheme);
